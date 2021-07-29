@@ -1,38 +1,105 @@
-.App {
+body {
+  background-color: #efefef;
+}
+
+.container {
+  max-width: 300px;
+  background-color: #efefef;
+  min-height: 400px;
+  margin: 20px auto;
+  padding: 15px 50px;
+  /* border: 1px solid floralwhite;
+  box-shadow: 0px 0px 10px gray; */
+}
+
+.text-align {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.inline {
+  display: inline;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.expense-container {
+  margin: 10px 0;
+  background-color: white;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-around;
+  box-shadow: 0px 0px 10px gray;
 }
 
-.App-link {
-  color: #61dafb;
+.expense-list {
+  padding: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.red {
+  border-right: 5px solid #bf4343;
+}
+
+.green {
+  border-right: 5px solid #55ca7ef0;
+}
+
+.expense-list li {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  background-color: white;
+  padding: 10px 8px;
+  box-shadow: 0px 0px 5px gray;
+}
+
+.delete-btn {
+  cursor: pointer;
+  background-color: #e74c3c;
+  border: 0;
+  color: #fff;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 2px 5px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-100%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.expense-list li:hover .delete-btn {
+  opacity: 1;
+}
+
+.add-transaction input {
+  width: 100%;
+  padding: 10px 0;
+  margin: 5px 0;
+}
+
+.income {
+  color: #55ca7ef0;
+}
+
+.expense {
+  color: #bf4343;
+}
+
+.description {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.submitBtn {
+  background-color: rgb(69, 69, 219);
+  color: whitesmoke;
+  font-weight: 700;
+}
+
+.submitBtn:hover {
+  opacity: 0.7;
+}
+
+.submitBtn:active {
+  background-color: rgb(192, 48, 60);
+  opacity: 1;
 }
