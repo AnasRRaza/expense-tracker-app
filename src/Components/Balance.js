@@ -16,7 +16,7 @@ const Balance = () => {
 
   return (
     <>
-      <h4 className="inline">Your Balance </h4>
+      <h4 className="inline balance">Your Balance </h4>
       <br />
       <h2 className="inline"> ${totalAmount().toFixed(2)}</h2>
     </>

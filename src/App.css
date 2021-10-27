@@ -1,19 +1,25 @@
 body {
-  background-color: #efefef;
+  background-color: #dbdfe0;
+  background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/pf-misctexture01-beer-000_5.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=c1552a7bdc2ea7b6e17d8d0d893c15be");
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }
 
 .container {
   max-width: 300px;
-  background-color: #efefef;
   min-height: 400px;
   margin: 20px auto;
   padding: 15px 50px;
-  /* border: 1px solid floralwhite;
-  box-shadow: 0px 0px 10px gray; */
 }
 
-.text-align {
+.header {
   text-align: center;
+  text-shadow: 3px 3px 5px gray;
+}
+
+.balance {
+  text-transform: uppercase;
 }
 
 .inline {
@@ -26,6 +32,7 @@ body {
   display: flex;
   justify-content: space-around;
   box-shadow: 0px 0px 10px gray;
+  border-radius: 8px;
 }
 
 .expense-list {
@@ -33,7 +40,7 @@ body {
 }
 
 .red {
-  border-right: 5px solid #bf4343;
+  border-right: 5px solid red;
 }
 
 .green {
@@ -48,6 +55,7 @@ body {
   background-color: white;
   padding: 10px 8px;
   box-shadow: 0px 0px 5px gray;
+  border-radius: 5px;
 }
 
 .delete-btn {
@@ -71,9 +79,11 @@ body {
 }
 
 .add-transaction input {
-  width: 100%;
-  padding: 10px 0;
+  width: 96%;
+  padding: 6px 3px;
   margin: 5px 0;
+  border-radius: 5px;
+  font-size: large;
 }
 
 .income {
@@ -81,7 +91,7 @@ body {
 }
 
 .expense {
-  color: #bf4343;
+  color: red;
 }
 
 .description {
@@ -90,9 +100,12 @@ body {
 }
 
 .submitBtn {
-  background-color: rgb(69, 69, 219);
+  margin: 0 auto;
+  width: 100% !important;
+  background-color: rgb(89, 89, 230);
   color: whitesmoke;
   font-weight: 700;
+  border-radius: 5px;
 }
 
 .submitBtn:hover {
@@ -100,6 +113,7 @@ body {
 }
 
 .submitBtn:active {
-  background-color: rgb(192, 48, 60);
+  background-color: transparent;
+  color: black;
   opacity: 1;
 }
