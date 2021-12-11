@@ -1,50 +1,42 @@
+// console.log("sw from public");
 
-const offlineCache = "expense-tracker";
+const CACHE_NAME = "version-1";
+const urlsToCache = ['index.html'];
 
-const cacheFiles = [
-  "/",
-  "/index.html",
-  "/manifest.json",
-  "/favicon.ico",
-  "/logo192.png",
-  "/static/js/bundle.js",
-  "/static/js/vendors~main.chunk.js",
-  "/static/js/main.chunk.js",
-  "/static/media/bg.ec70bd4b.jpg"
-];
-
-self.addEventListener("install", (event) => {
+self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(offlineCache).then((cache) => {
-      return cache.addAll(cacheFiles);
-    })
+    caches.open(CACHE_NAME)
+      .then((cache) => {
+        // console.log('Opened cache');
+
+        return cache.addAll(urlsToCache);
+      })
   )
 });
 
-self.addEventListener("fetch", (event) => {
-  if (!navigator.onLine) {
-    event.respondWith(
-      caches.match(event.request).then((res) => {
-        if (res) {
-          return res;
-        }
+// Listen for requests
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(() => {
+        return fetch(event.request)
+          .catch(() => caches.match(''))
       })
-    );
-  }
+  )
 });
 
-self.addEventListener("activate", function (event) {
+
+self.addEventListener('activate', (event) => {
+  const cacheWhitelist = [];
+  cacheWhitelist.push(CACHE_NAME);
+
   event.waitUntil(
-    caches.keys().then(function (cachesName) {
-      return Promise.all(
-        cachesName
-          .filter(function (cacheName) {
-            return cacheName.startsWith("Offline-") && cacheName != offlineCache;
-          })
-          .map(function (cacheName) {
-            return caches.delete(cacheName);
-          })
-      );
-    })
-  );
+    caches.keys().then((cacheNames) => Promise.all(
+      cacheNames.map((cacheName) => {
+        if (!cacheWhitelist.includes(cacheName)) {
+          return caches.delete(cacheName);
+        }
+      })
+    ))
+  )
 });
