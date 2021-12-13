@@ -23,19 +23,22 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request)
-      .then((res) => {
-        return res || fetch(event.request);
-      })
-  )
+  if (!navigator.onLine) {
+    event.respondWith(
+      caches.match(event.request)
+        .then((res) => {
+          if (res) {
+            return res;
+          }
+        })
+    )
+  }
 });
 
 
 self.addEventListener('activate', (event) => {
   const cacheWhitelist = [];
   cacheWhitelist.push(CACHE_NAME);
-
   event.waitUntil(
     caches.keys().then((cacheNames) => Promise.all(
       cacheNames.map((cacheName) => {
