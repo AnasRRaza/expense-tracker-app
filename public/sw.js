@@ -1,6 +1,17 @@
 
-const CACHE_NAME = "version-1";
-const urlsToCache = ['index.html'];
+const CACHE_NAME = "expense-tracker";
+const urlsToCache = [
+  "/",
+  "/index.html",
+  "/manifest.json",
+  "/favicon.ico",
+  "/static/media/bg.ec70bd4b.jpg",
+  "/logo192.png",
+  "/static/js/bundle.js",
+  "/static/js/vendors~main.chunk.js",
+  "/static/js/main.chunk.js",
+  "/static/media/logo.6ce24c58.svg",
+];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -14,9 +25,8 @@ self.addEventListener('install', (event) => {
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request)
-      .then(() => {
-        return fetch(event.request)
-          .catch(() => caches.match(''))
+      .then((res) => {
+        return res || fetch(event.request);
       })
   )
 });
